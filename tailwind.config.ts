@@ -18,11 +18,11 @@ module.exports = {
       screens: {
 
         'iphone5': '320px',
-        // => @media (min-width: 640px) { ... }
+        // => @media (min-width: 320px) { ... }
         'medium-phone': '380px',
-        // => @media (min-width: 640px) { ... }
+        // => @media (min-width: 380px) { ... }
         'large-phone': '480px',
-        // => @media (min-width: 640px) { ... }
+        // => @media (min-width: 480px) { ... }
         'tablet': '640px',
         // => @media (min-width: 640px) { ... }
 
@@ -34,5 +34,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };

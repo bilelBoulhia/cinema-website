@@ -3,23 +3,20 @@
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import React from 'react';
 import { motion } from 'framer-motion';
-import SearchBar from "@/components/search-bar";
+import SearchBar from "@/components/Search-bar";
 
 const Navbar = () => {
 
     const links = ["movies", "categories", "this-week", "about"];
     const [visible, isVisible] = React.useState(false);
 
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
     return (
 
 
 
-        <nav className="fixed z-50  flex justify-end items-center w-full p-2">
+        <nav className="fixed z-50  flex justify-end items-center w-full  p-2">
 
-            <div className="nav-links  p-2 backdrop-blur-sm bg-black shadow-[5px_5px_0px_0px_rgba(65,179,162,0.4)] rounded flex items-center gap-x-6 text-xs small:text-[0.60rem] md:text-base ">
+            <div className="nav-links iphone5:text-[0.60rem] iphone5:p-2  medium-phone:text-[0.75rem]  tablet:text-md  desktop:text-[0.80rem] backdrop-blur-sm bg-black shadow-[5px_5px_0px_0px_rgba(65,179,162,0.4)] rounded flex items-center gap-x-6  ">
 
                 {links.map((link) => (
 
@@ -39,7 +36,7 @@ const Navbar = () => {
                 ))}
                 <SearchBar isVisible={visible}/>
 
-                <div className="border-l  bg-primary   shadow-[3px_3px_rgba(12,_124,_102,_0.8),_6px_6px_rgba(13,_124,_102,_0.6)] h-5 mx-3"></div>
+                <div className="border-l  bg-primary   shadow-[3px_3px_rgba(12,_124,_102,_0.8),_6px_6px_rgba(13,_124,_102,_0.6)] h-5 mx-2"></div>
 
                 <div className="relative flex items-center">
                     <MagnifyingGlassIcon

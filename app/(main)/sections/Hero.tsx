@@ -1,28 +1,35 @@
 import Image from 'next/image';
-import cw from '@/assets/1322340.jpg'
-const Hero = ()=> {
-    return (
-        <div className="w-full bg-gray-900 relative">
-            <div className="relative">
-                <Image
-                    src={cw}
-                    alt="Background"
-                    layout="responsive"
-                    objectFit="cover"
-                    quality={100}
-                    className="z-0"
-                />
-                <div className="absolute  inset-0 bg-gradient-to-r from-black via-transparent to-transparent"></div>
-            </div>
+import cw from '@/assets/movie-wallpaper.jpg'
+import BookingForm from "@/components/Booking";
 
-            <div className="absolute mt-1 medium-phone:pt-16 medium-phone:p-4 text-white max-w-lg  inset-0  flex-col justify-center items-start ">
-        <span className="bg-primary text-xs  px-2 py-1 rounded  font-semibold inline-block mb-2">
-            THIS WEEK'S MOVIE
-        </span>
-                <h1 className="iphone5:text-md font-extrabold medium-phone:text-lg large-phone:text-3xl   leading-snug text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-green-600 to-teal-800">Spider-Man: No Way Home</h1>
+
+const Hero = () => {
+    return (
+        <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-gray-900 overflow-hidden">
+            <Image
+                src={cw}
+                alt="Background"
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent"></div>
+
+            <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-6 lg:px-8">
+                <div className="max-w-lg">
+                    <span className="bg-primary text-xs px-2 py-1 rounded font-semibold inline-block mb-2">
+                        THIS WEEK'S MOVIE
+                    </span>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-green-600 to-teal-800">
+                        Spider-Man: No Way Home
+                    </h1>
+
+                    <BookingForm/>
+                </div>
             </div>
         </div>
-
     );
 }
-export default Hero
+
+export default Hero;
