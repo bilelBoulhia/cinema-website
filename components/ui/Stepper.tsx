@@ -54,8 +54,19 @@ export default function MultiPageForm({steps}:stepProps) {
                         stepProps.completed = false;
                     }
                     return (
-                        <Step  key={step.label} {...stepProps}>
-                            <StepLabel  >
+                        <Step key={step.label} {...stepProps}>
+                            <StepLabel
+                                StepIconProps={{
+                                    sx: {
+                                        '&.Mui-active': {
+                                            color: 'teal', // Change this to your desired color
+                                        },
+                                        '&.Mui-completed': {
+                                            color: 'lightgreen', // Change this to your desired color
+                                        },
+                                    },
+                                }}
+                            >
 
                             <span className='text-white'>
                                 {step.label}
