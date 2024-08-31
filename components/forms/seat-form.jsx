@@ -69,7 +69,7 @@ const SeatForm = () => {
                     key={seat}
 
                     className={clsx(
-                        'seat rounded  transition-transform duration-300 ease-in-out relative top-px',
+                        'rounded   transition-transform duration-300 text-center p-[1px] table justify-center items-center ease-in-out relative top-px ',
                         'w-5 h-5 ',
                         isSelected ? 'bg-green-500' : 'bg-gray-600',
                         isOccupied && 'bg-red-400',
@@ -86,6 +86,7 @@ const SeatForm = () => {
                             }
                     }
                 >
+
 
 
 

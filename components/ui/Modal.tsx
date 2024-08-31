@@ -1,122 +1,245 @@
-"use client"
+"use client";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import React, {
+    ReactNode,
+    createContext,
+    useContext,
+    useEffect,
+    useRef,
+    useState,
+} from "react";
+import {Button} from "@mui/material";
+import {Slot} from "@radix-ui/react-slot";
 
-import * as React from "react"
-import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { Cross2Icon } from "@radix-ui/react-icons"
+interface ModalContextType {
+    open: boolean;
+    setOpen: (open: boolean) => void;
+}
 
-import { cn } from "@/lib/utils"
+const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
-const Dialog = DialogPrimitive.Root
+export const ModalProvider = ({ children }: { children: ReactNode }) => {
+    const [open, setOpen] = useState(false);
 
-const DialogTrigger = DialogPrimitive.Trigger
+    return (
+        <ModalContext.Provider value={{ open, setOpen }}>
+            {children}
+        </ModalContext.Provider>
+    );
+};
 
-const DialogPortal = DialogPrimitive.Portal
+export const useModal = () => {
+    const context = useContext(ModalContext);
+    if (!context) {
+        throw new Error("useModal must be used within a ModalProvider");
+    }
+    return context;
+};
 
-const DialogClose = DialogPrimitive.Close
+export function Modal({ children }: { children: ReactNode }) {
+    return <ModalProvider>{children}</ModalProvider>;
+}
 
-const DialogOverlay = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Overlay>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->(({ className, ...props }, ref) => (
-    <DialogPrimitive.Overlay
-        ref={ref}
-        className={cn(
-            "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-            className
-        )}
-        {...props}
-    />
-))
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
-
-const DialogContent = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Content>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-    <DialogPortal>
-        <DialogOverlay />
-        <DialogPrimitive.Content
-            ref={ref}
-            className={cn(
-                "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4  bg-background p-6  duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
-                className
-            )}
-            {...props}
+export const ModalTrigger = ({
+                                 children,
+                                 className,
+    asChild
+                             }: {
+    children: ReactNode;
+    className?: string;
+    asChild:boolean;
+}) => {
+    const { setOpen } = useModal();
+    const Comp = asChild ? Slot : "button"
+    return (
+        <Comp
+            className={cn(className)}
+            onClick={() => setOpen(true)}
         >
             {children}
-            <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-                <Cross2Icon className="h-4 w-4" />
-                <span className="sr-only">Close</span>
-            </DialogPrimitive.Close>
-        </DialogPrimitive.Content>
-    </DialogPortal>
-))
-DialogContent.displayName = DialogPrimitive.Content.displayName
+        </Comp>
+    );
+};
 
-const DialogHeader = ({
-                          className,
-                          ...props
-                      }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div
-        className={cn(
-            "flex flex-col space-y-1.5 text-center sm:text-left",
-            className
-        )}
-        {...props}
-    />
-)
-DialogHeader.displayName = "DialogHeader"
+export const ModalBody = ({
+                              children,
+                              className,
+                          }: {
+    children: ReactNode;
+    className?: string;
+}) => {
+    const { open } = useModal();
 
-const DialogFooter = ({
-                          className,
-                          ...props
-                      }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div
-        className={cn(
-            "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-            className
-        )}
-        {...props}
-    />
-)
-DialogFooter.displayName = "DialogFooter"
+    useEffect(() => {
+        if (open) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+    }, [open]);
 
-const DialogTitle = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Title>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
->(({ className, ...props }, ref) => (
-    <DialogPrimitive.Title
-        ref={ref}
-        className={cn(
-            "text-lg font-semibold leading-none tracking-tight",
-            className
-        )}
-        {...props}
-    />
-))
-DialogTitle.displayName = DialogPrimitive.Title.displayName
+    const modalRef = useRef(null);
+    const { setOpen } = useModal();
+    useOutsideClick(modalRef, () => setOpen(false));
 
-const DialogDescription = React.forwardRef<
-    React.ElementRef<typeof DialogPrimitive.Description>,
-    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-    <DialogPrimitive.Description
-        ref={ref}
-        className={cn("text-sm text-muted-foreground", className)}
-        {...props}
-    />
-))
-DialogDescription.displayName = DialogPrimitive.Description.displayName
+    return (
+        <AnimatePresence>
+            {open && (
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                    }}
+                    animate={{
+                        opacity: 1,
+                        backdropFilter: "blur(10px)",
+                    }}
+                    exit={{
+                        opacity: 0,
+                        backdropFilter: "blur(0px)",
+                    }}
+                    className="fixed [perspective:800px] [transform-style:preserve-3d] inset-0 h-full w-full  flex items-center justify-center z-50"
+                >
+                    <Overlay />
 
-export {
-    Dialog,
-    DialogPortal,
-    DialogOverlay,
-    DialogTrigger,
-    DialogClose,
-    DialogContent,
-    DialogHeader,
-    DialogFooter,
-    DialogTitle,
-    DialogDescription,
-}
+                    <motion.div
+                        ref={modalRef}
+                        className={cn(
+                            "min-h-[50%] max-h-[90%] md:max-w-[40%] bg-white dark:bg-neutral-950 border border-transparent dark:border-neutral-800 md:rounded-2xl relative z-50 flex flex-col flex-1 overflow-hidden",
+                            className
+                        )}
+                        initial={{
+                            opacity: 0,
+                            scale: 0.5,
+                            rotateX: 40,
+                            y: 40,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            scale: 1,
+                            rotateX: 0,
+                            y: 0,
+                        }}
+                        exit={{
+                            opacity: 0,
+                            scale: 0.8,
+                            rotateX: 10,
+                        }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 260,
+                            damping: 15,
+                        }}
+                    >
+                        <CloseIcon />
+                        {children}
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
+};
+
+export const ModalContent = ({
+                                 children,
+                                 className,
+                             }: {
+    children: ReactNode;
+    className?: string;
+}) => {
+    return (
+        <div className={cn("flex flex-col flex-1 p-8 md:p-10", className)}>
+            {children}
+        </div>
+    );
+};
+
+export const ModalFooter = ({
+                                children,
+                                className,
+                            }: {
+    children: ReactNode;
+    className?: string;
+}) => {
+    return (
+        <div
+            className={cn(
+                "flex justify-end p-4 bg-gray-100 dark:bg-neutral-900",
+                className
+            )}
+        >
+            {children}
+        </div>
+    );
+};
+
+const Overlay = ({ className }: { className?: string }) => {
+    return (
+        <motion.div
+            initial={{
+                opacity: 0,
+            }}
+            animate={{
+                opacity: 1,
+                backdropFilter: "blur(10px)",
+            }}
+            exit={{
+                opacity: 0,
+                backdropFilter: "blur(0px)",
+            }}
+            className={`fixed inset-0 h-full w-full bg-black bg-opacity-50 z-50 ${className}`}
+        ></motion.div>
+    );
+};
+
+const CloseIcon = () => {
+    const { setOpen } = useModal();
+    return (
+        <button
+            onClick={() => setOpen(false)}
+            className="absolute top-4 right-4 group"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-black dark:text-white h-4 w-4 group-hover:scale-125 group-hover:rotate-3 transition duration-200"
+            >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M18 6l-12 12" />
+                <path d="M6 6l12 12" />
+            </svg>
+        </button>
+    );
+};
+
+// Hook to detect clicks outside of a component.
+// Add it in a separate file, I've added here for simplicity
+export const useOutsideClick = (
+    ref: React.RefObject<HTMLDivElement>,
+    callback: Function
+) => {
+    useEffect(() => {
+        const listener = (event: any) => {
+            // DO NOTHING if the element being clicked is the target element or their children
+            if (!ref.current || ref.current.contains(event.target)) {
+                return;
+            }
+            callback(event);
+        };
+
+        document.addEventListener("mousedown", listener);
+        document.addEventListener("touchstart", listener);
+
+        return () => {
+            document.removeEventListener("mousedown", listener);
+            document.removeEventListener("touchstart", listener);
+        };
+    }, [ref, callback]);
+};

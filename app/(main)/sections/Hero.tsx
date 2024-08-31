@@ -19,10 +19,10 @@ const Hero = () => {
             <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-6 lg:px-8">
                 <div className="max-w-lg">
                     <span className="bg-primary text-xs px-2 py-1 rounded font-semibold inline-block mb-2">
-                        THIS WEEK'S MOVIE
+                        THIS WEEK'S PREMIERE
                     </span>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-green-600 to-teal-800">
-                        Spider-Man: No Way Home
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-transparent bg-clip-text  bg-gradient-to-r from-emerald-700 via-green-800 to-teal-950 [text-shadow:0_0_rgba(0,0,0,0.1)]">
+                       1917 : WW1
                     </h1>
 
                     <BookingForm/>

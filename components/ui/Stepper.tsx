@@ -4,8 +4,9 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
+
 import Typography from '@mui/material/Typography';
+import {Button} from "@/components/ui/Button";
 
 
 
@@ -59,10 +60,10 @@ export default function MultiPageForm({steps}:stepProps) {
                                 StepIconProps={{
                                     sx: {
                                         '&.Mui-active': {
-                                            color: 'teal', // Change this to your desired color
+                                            color: 'teal',
                                         },
                                         '&.Mui-completed': {
-                                            color: 'lightgreen', // Change this to your desired color
+                                            color: 'darkcyan',
                                         },
                                     },
                                 }}
@@ -98,7 +99,8 @@ export default function MultiPageForm({steps}:stepProps) {
                             color="inherit"
                             disabled={activeStep === 0}
                             onClick={handleBack}
-                            sx={{ mr: 1 }}
+
+                            className='mr-1 accent-inherit'
                         >
                             Back
                         </Button>
