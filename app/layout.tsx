@@ -3,6 +3,7 @@ import "@/app/style/globals.css";
 import Header from "@/app/sections/Header";
 import localFont from 'next/font/local'
 import React from "react";
+import Footer from "@/app/sections/Footer";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -24,10 +25,10 @@ export default function RootLayout({children,}: { children: React.ReactNode; }) 
     <html lang="en" className={Montserrat.className}>
       <body className="bg-background text-foreground">
       <Header/>
-
       <main className="min-h-screenq flex flex-col items-center">
           {children}
       </main>
+      <Footer/>
       </body>
     </html>
   );

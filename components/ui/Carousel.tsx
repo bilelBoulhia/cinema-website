@@ -25,7 +25,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                         <div
                             onMouseEnter={() => setHoverIndex(index)}
                             onMouseLeave={() => setHoverIndex(null)}
-                            className="xl:flex-[0_0_10%]  sm:flex-[0_0_20%]  md:flex-[0_0_25%] lg:flex-[0_0_25%] flex-[0_0_30%]  min-w-0 pl-4"
+                            className="iphone5:flex-[0_0_45%] xl:flex-[0_0_15%] medium-phone:flex-[0_0_32%]  sm:flex-[0_0_30%]  md:flex-[0_0_25%] lg:flex-[0_0_25%] laptop: flex-[0_0_30%]  min-w-0 pl-4"
                             key={index}
                         >
                             <div className="h-full  flex flex-col items-center  justify-center font-semibold select-none ">
@@ -35,7 +35,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                                         alt={card.label}
                                         layout="fill"
                                         objectFit="cover"
-                                        className="rounded-xl  shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_25px_25px_rgba(0,_98,_90,_0.05)] transition-all duration-500 ease-in-out"
+                                        className="rounded-xl  shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3)] transition-all duration-500 ease-in-out"
                                     />
                                     <div
                                         className={clsx(

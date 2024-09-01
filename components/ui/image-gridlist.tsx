@@ -14,7 +14,7 @@ const ImageGridlist = (
 )=>{
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     return (
-        <div className="h-[30vw]  w-[100%] p-[1px]"
+        <div className="iphone5:h-[80vw] large-phone:h-[30vw]  w-[100%] p-[1px]"
              style={{
                  scrollbarWidth: 'none',
                  msOverflowStyle: 'none',
@@ -26,12 +26,12 @@ const ImageGridlist = (
                  }
              }}
         >
-            <div className="relative  flex flex-row gap-2 justify-between h-full w-full">
+            <div className="relative  flex large-phone:flex-row gap-2 iphone5:flex-col justify-between h-full w-full">
                 {images.map((src, index) => (
                     <Card
                         key={index}
                         className={clsx(
-                            'card  relative flex-1 transition-all duration-300 ease-in-out',
+                            'card  relative  flex-1  transition-all duration-300 ease-in-out',
                             hoveredIndex === index ? 'flex-[3]' : '',
                         )}
                         onMouseEnter={() => setHoveredIndex(index)}
@@ -41,14 +41,14 @@ const ImageGridlist = (
                         <div>
                             <Image
                                 src={src.img}
-                                className="rounded-2xl right-0 shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3)] max-h-[20vw] transition-all duration-500 ease-in-out"
+                                className="iphone5:rounded  sm:rounded-2xl medium-phone:rounded-md right-0 shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3)] max-h-[20vw] transition-all duration-500 ease-in-out"
                                 alt={`Image ${index + 1}`}
                                 layout="fill"
                                 objectFit="cover"
                             />
 
                             <div
-                                className={clsx(hoveredIndex === index? 'absolute max-h-[20vw]  rounded-2xl w-full  inset-0 bg-gradient-to-b from-black/50 via-black/30 to-transparent' : ''
+                                className={clsx(hoveredIndex === index? 'absolute max-h-[20vw]  iphone5:rounded sm:rounded-2xl medium-phone:rounded-md w-full  inset-0 bg-gradient-to-b from-black/50 via-black/30 to-transparent' : ''
                                 )}/>
                         </div>
 
@@ -69,7 +69,7 @@ const ImageGridlist = (
                                         transition={{duration: 0.2, delay: 0.1}}
                                         className="absolute inset-0 flex items-center justify-center"
                                     >
-                                        <h1 className="tablet:text-2xl mb-2 iphone5:text-xs md:text-4xl lg:text-7xl font-bold text-center text-white font-sans  tracking-tight">
+                                        <h1 className="tablet:text-2xl mb-2 iphone5:text-xs medium-phone:text-2xl  md:text-4xl lg:text-7xl font-bold text-center text-white font-sans  tracking-tight">
                                             {src.text}
                                         </h1>
                                     </motion.div>

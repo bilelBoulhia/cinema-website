@@ -35,7 +35,7 @@ const Explore = ()=>{
 
     return (
         <div className="relative w-full overflow-hidden">
-            <Meteors number={20} className="absolute inset-0"/>
+            <Meteors number={30} className="absolute inset-0"/>
             <div className="relative z-10">
                 <div className="w-full p-5">
                     <Heading size="medium" variant='lightColor'>Latest movies</Heading>
@@ -45,14 +45,7 @@ const Explore = ()=>{
                     <Heading size="medium" variant='lightColor'>Best Rated movies</Heading>
                     <Carousel cards={films}/>
                 </div>
-                <div className="w-full p-5">
-                    <Heading size="medium" variant='lightColor'>our Picks </Heading>
-                    <Carousel cards={films}/>
-                </div>
-                <div className="w-full p-5">
-                    <Heading size="medium" variant='lightColor'>Browse</Heading>
-                    <Carousel cards={films}/>
-                </div>
+
             </div>
         </div>
 

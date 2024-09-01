@@ -34,10 +34,14 @@ module.exports = {
         // => @media (min-width: 320px) { ... }
         'medium-phone': '380px',
         // => @media (min-width: 380px) { ... }
-        'large-phone': '480px',
+        'large-phone': '520px',
         // => @media (min-width: 480px) { ... }
+
+
+
         'tablet': '640px',
         // => @media (min-width: 640px) { ... }
+
 
         'laptop': '1024px',
         // => @media (min-width: 1024px) { ... }

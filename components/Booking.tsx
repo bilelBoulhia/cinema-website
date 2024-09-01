@@ -30,7 +30,7 @@ const booking = ()=>{
     return(
         <Modal>
             <ModalTrigger asChild>
-                <Button className="mt-4 sm:mt-6">Book Now</Button>
+                <Button size='sm' className="mt-4 sm:mt-6">Book Now</Button>
             </ModalTrigger>
             <ModalBody>
 

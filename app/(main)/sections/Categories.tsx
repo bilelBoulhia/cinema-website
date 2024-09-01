@@ -47,7 +47,7 @@ const Categories = ()=>{
 
               <Heading size='default' variant='darkColor'>Categories</Heading>
 
-                <FlipWords className='font-bold' words={images.map(t=>t.text)}/>
+              <FlipWords className='font-bold  medium-phone:text-4xl iphone5:text-2xl lg:text-7xl' words={images.map(t=>t.text)}/>
 
 
             </motion.h1>
