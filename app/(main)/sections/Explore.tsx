@@ -1,3 +1,4 @@
+'use client'
 import img1 from "@/assets/movies/title_poster_1717441966.jpg"
 import img2 from "@/assets/movies/s-l400.png"
 import img3 from "@/assets/movies/onesheet.jpg"
@@ -13,6 +14,11 @@ import Carousel from "@/components/ui/Carousel";
 import Heading from "@/components/ui/Heading";
 
 import {Meteors} from "@/components/ui/Meteor-background";
+import {ArrowRightIcon, PaperIcon, RocketIcon} from "@/assets/icons/Icons";
+import { motion } from "framer-motion"
+
+
+
 
 const Explore = ()=>{
 
@@ -38,14 +44,31 @@ const Explore = ()=>{
             <Meteors number={30} className="absolute inset-0"/>
             <div className="relative z-10">
                 <div className="w-full p-5">
-                    <Heading size="medium" variant='lightColor'>Latest movies</Heading>
+                    <motion.div
+                        className='flex gap-2 items-start flex-row cursor-pointer'
+                        whileHover={{x: 10}}
+                        transition={{type: "spring", stiffness: 400, damping: 10}}
+                    >
+                        <Heading size="medium" variant='white'>Latest movies</Heading>
+                        <div className='py-[18px]'>
+                            <RocketIcon/>
+                        </div>
+                    </motion.div>
                     <Carousel cards={films}/>
                 </div>
                 <div className="w-full p-5">
-                    <Heading size="medium" variant='lightColor'>Best Rated movies</Heading>
+                    <motion.div
+                        className='flex gap-2 items-start flex-row cursor-pointer'
+                        whileHover={{x: 10}}
+                        transition={{type: "spring", stiffness: 400, damping: 10}}
+                    >
+                        <Heading size="medium" variant='white'>Best Rated movies</Heading>
+                        <div className='py-[18px]'>
+                            <RocketIcon/>
+                        </div>
+                    </motion.div>
                     <Carousel cards={films}/>
                 </div>
-
             </div>
         </div>
 

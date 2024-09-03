@@ -25,7 +25,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                         <div
                             onMouseEnter={() => setHoverIndex(index)}
                             onMouseLeave={() => setHoverIndex(null)}
-                            className="iphone5:flex-[0_0_45%] xl:flex-[0_0_15%] medium-phone:flex-[0_0_32%]  sm:flex-[0_0_30%]  md:flex-[0_0_25%] lg:flex-[0_0_25%] laptop: flex-[0_0_30%]  min-w-0 pl-4"
+                            className="iphone5:flex-[0_0_45%] slighty-large-phone:flex-[0_0_35%] large-phone:flex-[0_0_33%] tablet:flex-[0_0_28%] extra-large-tablet:flex-[0_0_25%] laptop:flex-[0_0_15%]  min-w-0 pl-4"
                             key={index}
                         >
                             <div className="h-full  flex flex-col items-center  justify-center font-semibold select-none ">

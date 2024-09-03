@@ -1,23 +1,13 @@
-import Hero from "@/app/(main)/sections/Hero";
-import Categories from "@/app/(main)/sections/Categories";
-import Explore from "@/app/(main)/sections/Explore";
-import Footer from "@/app/sections/Footer";
-
-
-
-
-
-
-
-export default async function Index() {
+'use client'
+export default  function Index() {
 
 
 
 
     return (
-        <div className="w-full flex-1  flex gap-5  overflow-x-hidden flex-col items-center">
-            <Explore/>
+        <div className="w-full flex-1   flex gap-5  overflow-x-hidden flex-row items-start justify-start">
 
+           s3
 
         </div>
     );

@@ -25,7 +25,7 @@ export default function RootLayout({children,}: { children: React.ReactNode; }) 
     <html lang="en" className={Montserrat.className}>
       <body className="bg-background text-foreground">
       <Header/>
-      <main className="min-h-screenq flex flex-col items-center">
+      <main className="min-h-screen flex flex-col items-center">
           {children}
       </main>
       <Footer/>
