@@ -14,7 +14,7 @@ import Carousel from "@/components/ui/Carousel";
 import Heading from "@/components/ui/Heading";
 
 import {Meteors} from "@/components/ui/Meteor-background";
-import {ArrowRightIcon, PaperIcon, RocketIcon} from "@/assets/icons/Icons";
+import {ArrowRightIcon, ChevronIcon, PaperIcon, RocketIcon} from "@/assets/icons/Icons";
 import { motion } from "framer-motion"
 
 
@@ -46,26 +46,31 @@ const Explore = ()=>{
                 <div className="w-full p-5">
                     <motion.div
                         className='flex gap-2 items-start flex-row cursor-pointer'
+                        whileTap={{x: 10}}
                         whileHover={{x: 10}}
                         transition={{type: "spring", stiffness: 400, damping: 10}}
                     >
                         <Heading size="medium" variant='white'>Latest movies</Heading>
-                        <div className='py-[18px]'>
-                            <RocketIcon/>
+                        <div className='relative my-auto pt-2 inline-block w-max '>
+                            <ChevronIcon/>
                         </div>
                     </motion.div>
                     <Carousel cards={films}/>
                 </div>
                 <div className="w-full p-5">
                     <motion.div
-                        className='flex gap-2 items-start flex-row cursor-pointer'
+                        className='flex gap-2 items-start justify-start flex-row cursor-pointer'
+                        whileTap={{x: 10}}
                         whileHover={{x: 10}}
                         transition={{type: "spring", stiffness: 400, damping: 10}}
                     >
                         <Heading size="medium" variant='white'>Best Rated movies</Heading>
-                        <div className='py-[18px]'>
-                            <RocketIcon/>
+
+                        <div className='relative my-auto pt-2 inline-block w-max '>
+                            <ChevronIcon/>
                         </div>
+
+
                     </motion.div>
                     <Carousel cards={films}/>
                 </div>

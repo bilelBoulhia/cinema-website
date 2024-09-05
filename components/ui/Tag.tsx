@@ -23,9 +23,7 @@ const TagVariants = cva(
     }
 )
 
-export interface TagProps
-    extends React.HTMLAttributes<HTMLDivElement>,
-        VariantProps<typeof TagVariants> {}
+export interface TagProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof TagVariants> {}
 
 function Tag({ className, variant, ...props }: TagProps) {
     return (

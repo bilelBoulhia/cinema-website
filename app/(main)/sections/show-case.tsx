@@ -4,6 +4,7 @@ import pic1 from '@/assets/rooms/picture1.jpg'
 import pic2 from '@/assets/rooms/picture2.jpg'
 import pic3 from '@/assets/rooms/picture3.jpg'
 import pic4 from '@/assets/rooms/picture4.jpg'
+import pic5 from '@/assets/rooms/picture5.jpeg'
 
 
 
@@ -25,13 +26,13 @@ export const ShowCase = () => {
 
     const data = [
         {
-            title: "our cinema",
+            title: "Our cinema",
             content: (
                 <div
                     className="grid iphone5:rid-cols-2 iphone5:grid-rows-2 medium-phone:grid-cols-2 medium-phone:grid-rows-3 large-phone:grid-cols-2 large-phone:grid-rows-3 tablet:grid-cols-4 tablet:grid-rows-2  gap-4 h-[400px]">
                     <div className="col-span-2 row-span-2 relative rounded-lg overflow-hidden">
                         <img
-                            src={pic2.src}
+                            src={pic5.src}
                             alt="Room 1"
                             className="object-cover w-full h-full"
                         />
@@ -74,39 +75,58 @@ export const ShowCase = () => {
         {
             title: "Services",
             content: (
-                <div>
+                <div className="relative overflow-x-auto">
+                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead
+                            className="text-xs text-gray-700 uppercase dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3 rounded-s-lg">
+                                Product name
+                            </th>
+                            <th scope="col" className="px-6 py-3 rounded-e-lg">
+                                Price
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr className="">
+                            <th scope="row"
+                                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                Movies
+                            </th>
 
-                    <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
-                        We offer the following
-                    </p>
-                    <div className="mb-8">
-
-                        <div
-                            className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-
-                           <Checksvg/> Latest released Movies
-                        </div>
-                        <div
-                            className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-                            <Checksvg/> Food and drinks
-                        </div>
-                        <div
-                            className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-                            <Checksvg/> fun Events
-                        </div>
-                        <div
-                            className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-                            <Checksvg/> Musical live shows
-                        </div>
-                        <div
-                            className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-                            <Checksvg/> Best prices in algiers
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-
-                    </div>
+                            <td className="px-6 py-4">
+                                350da
+                            </td>
+                        </tr>
+                        <tr className="">
+                            <th scope="row"
+                                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                Food and Drinks
+                            </th>
+                            <td className="px-6 py-4">
+                                50da-400da
+                            </td>
+                        </tr>
+                        <tr className="">
+                            <th scope="row"
+                                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                Special Events
+                            </th>
+                            <td className="px-6 py-4">
+                                400da
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr className="font-semibold text-gray-900 dark:text-white">
+                            <th scope="row" className="px-6 py-3 text-base">Total</th>
+                            <td className="px-6 py-3">21,000</td>
+                        </tr>
+                        </tfoot>
+                    </table>
                 </div>
+
             ),
         },
     ];

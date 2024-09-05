@@ -5,6 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Image, {StaticImageData} from "next/image";
 import {AnimatePresence, motion} from "framer-motion";
 import clsx from "clsx";
+import MovieCard from './movie-card';
 
 type PropType = {
     cards: { image: StaticImageData, label: string }[]
@@ -20,45 +21,18 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     return (
         <section className="max-w-full mx-auto">
             <div className="" ref={emblaRef}>
+
                 <div className="flex -ml-4 touch-pan-y">
                     {cards.map((card, index) => (
-                        <div
-                            onMouseEnter={() => setHoverIndex(index)}
-                            onMouseLeave={() => setHoverIndex(null)}
-                            className="iphone5:flex-[0_0_45%] slighty-large-phone:flex-[0_0_35%] large-phone:flex-[0_0_33%] tablet:flex-[0_0_28%] extra-large-tablet:flex-[0_0_25%] laptop:flex-[0_0_15%]  min-w-0 pl-4"
+                        <MovieCard
+                            size='default'
                             key={index}
-                        >
-                            <div className="h-full  flex flex-col items-center  justify-center font-semibold select-none ">
-                                <div className="relative  w-full aspect-[3/4]   mb-4">
-                                    <Image
-                                        src={card.image}
-                                        alt={card.label}
-                                        layout="fill"
-                                        objectFit="cover"
-                                        className="rounded-xl  shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3)] transition-all duration-500 ease-in-out"
-                                    />
-                                    <div
-                                        className={clsx(
-                                            hoverIndex === index ? 'absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-transparent rounded-xl' : ''
-                                        )}
-                                    />
-                                </div>
-                                <AnimatePresence>
-                                    {hoverIndex === index && (
-                                        <motion.div
-                                            initial={{opacity: 0, y: 1}}
-                                            animate={{opacity: 1, y: 0}}
-                                            exit={{opacity: 0, y: 10}}
-                                            transition={{duration: 0.2, delay: 0.1}}
-                                            className="absolute mt-5 text-center font-bold text-white font-sans tracking-tight"
-                                        >
-                                            {card.label.toUpperCase()}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        </div>
+                            label={card.label}
+                            image={card.image}
+                            className="iphone5:flex-[0_0_45%] slighty-large-phone:flex-[0_0_35%] large-phone:flex-[0_0_33%] tablet:flex-[0_0_28%] extra-large-tablet:flex-[0_0_25%] laptop:flex-[0_0_15%] min-w-0 pl-4"
+                        />
                     ))}
+
                 </div>
             </div>
         </section>

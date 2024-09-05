@@ -7,7 +7,7 @@ import SearchBar from "@/components/Search-bar";
 
 const Navbar = () => {
 
-    const links = ["movies", "categories", "this-week", "about"];
+    const links = ["this-week","categories","movies",   "about"];
     const [visible, isVisible] = React.useState(false);
 
     return (

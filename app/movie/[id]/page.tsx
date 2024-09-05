@@ -1,5 +1,4 @@
-import Image from "next/image";
-import mr from '@/assets/action.jpg'
+
 import Main from "@/app/movie/sections/main";
 import SeeAlso from "@/app/movie/sections/see-also";
 

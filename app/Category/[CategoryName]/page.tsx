@@ -1,14 +1,19 @@
 'use client'
+
+
+import Heading from "@/app/Category/sections/Heading";
+import {CardList} from "@/components/ui/Card-list";
+
 export default  function Index() {
 
 
 
 
     return (
-        <div className="w-full flex-1   flex gap-5  overflow-x-hidden flex-row items-start justify-start">
+        <div className="w-full flex-1   flex gap-5  overflow-x-hidden flex-col items-center justify-center">
 
-           s3
-
+            <Heading/>
+            <CardList/>
         </div>
     );
 }
