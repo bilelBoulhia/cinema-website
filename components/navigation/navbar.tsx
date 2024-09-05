@@ -4,10 +4,15 @@ import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import React from 'react';
 import { motion } from 'framer-motion';
 import SearchBar from "@/components/Search-bar";
-
+import Link from 'next/link';
 const Navbar = () => {
 
-    const links = ["this-week","categories","movies",   "about"];
+    const links = [
+        { href: "#this-week", label: "This Week" },
+        { href: "#categories", label: "Categories" },
+        { href: "#movies", label: "Movies" },
+        { href: "#about", label: "About" }
+    ];
     const [visible, isVisible] = React.useState(false);
 
     return (
@@ -18,21 +23,21 @@ const Navbar = () => {
 
             <div className="nav-links iphone5:text-[0.60rem] iphone5:p-2  medium-phone:text-[0.75rem]  tablet:text-md  desktop:text-[0.80rem] backdrop-blur-sm bg-black shadow-[5px_5px_0px_0px_rgba(65,179,162,0.4)] rounded-2xl flex items-center gap-x-6">
 
-                {links.map((link) => (
+                {links.map((link,index) => (
 
-                    <span
-                        key={link}
-
-                        className="cursor-default relative pb-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary after:shadow-[5px_5px_rgba(0,_98,_90,_0.5),_10px_10px_rgba(0,_98,_90,_0.2)] after:transition-all after:duration-300 hover:after:w-full"
-                        onClick={() => {
+                    <Link
+                        key={link.href}
+                        href={link.href}
+                        className="cursor-pointer relative pb-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary after:shadow-[5px_5px_rgba(0,_98,_90,_0.5),_10px_10px_rgba(0,_98,_90,_0.2)] after:transition-all after:duration-300 hover:after:w-full"
+                        onClick={(e) => {
+                            e.preventDefault();
                             document
-                                .getElementById(link)
+                                .querySelector(link.href)
                                 ?.scrollIntoView({ behavior: "smooth" });
                         }}
                     >
-                        {link.charAt(0).toUpperCase() + link.slice(1)}
-                    </span>
-
+                        {link.label}
+                    </Link>
                 ))}
                 <SearchBar isVisible={visible}/>
 

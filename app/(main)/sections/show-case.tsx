@@ -118,12 +118,7 @@ export const ShowCase = () => {
                             </td>
                         </tr>
                         </tbody>
-                        <tfoot>
-                        <tr className="font-semibold text-gray-900 dark:text-white">
-                            <th scope="row" className="px-6 py-3 text-base">Total</th>
-                            <td className="px-6 py-3">21,000</td>
-                        </tr>
-                        </tfoot>
+
                     </table>
                 </div>
 
