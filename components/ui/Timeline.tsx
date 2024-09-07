@@ -15,7 +15,7 @@ interface TimelineEntry {
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     const ref = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const [height, setHeight] = useState(8);
+    const [height, setHeight] = useState(9);
 
     useEffect(() => {
         if (ref.current) {
