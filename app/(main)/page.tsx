@@ -7,7 +7,11 @@ import {ShowCase} from "@/app/(main)/sections/show-case";
 
 
 
+
+
+
 export default async function Index() {
+
 
 
     return (

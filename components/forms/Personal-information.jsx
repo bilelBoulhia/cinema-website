@@ -56,19 +56,19 @@ const PersonalInfo_form = ()=>{
                         </div>
 
                         <div className="sm:col-span-3">
-                            <label htmlFor="country" className="block text-sm font-medium leading-6">
-                                Country
+                            <label htmlFor="time" className="block text-sm font-medium leading-6">
+                                Time
                             </label>
-                            <div className="mt-2">
+                            <div>
                                 <select
-                                    id="country"
-                                    name="country"
-                                    autoComplete="country-name"
+                                    id="time"
+                                    name="time"
+
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-primary sm:max-w-xs sm:text-sm sm:leading-6"
                                 >
-                                    <option>United States</option>
-                                    <option>Canada</option>
-                                    <option>Mexico</option>
+                                    <option>06/09/2024 11:00</option>
+                                    <option>08/09/2024 17:00</option>
+                                    <option>09/09/2024 20:00</option>
                                 </select>
                             </div>
                         </div>

@@ -23,7 +23,7 @@ const SearchBar : FC<props> = ({isVisible}) => {
                 initial={{width: 0, height: '1.5rem', opacity: 0}}
                 animate={
                     isVisible
-                        ? { width: "99%", opacity: 1, height: '100%' }
+                        ? { width: "100%", opacity: 1, height: '100%' }
                         : { width: 0, opacity: 0, height: '20%' }
                 }
                 transition={{

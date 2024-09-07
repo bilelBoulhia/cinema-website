@@ -50,7 +50,7 @@ const Explore = ()=>{
                         whileHover={{x: 10}}
                         transition={{type: "spring", stiffness: 400, damping: 10}}
                     >
-                        <Heading size="medium" variant='white'>Latest movies</Heading>
+                        <Heading size="medium" variant='white'>This Week Movies</Heading>
                         <div className='relative my-auto pt-2 inline-block w-max '>
                             <ChevronIcon/>
                         </div>
@@ -64,7 +64,7 @@ const Explore = ()=>{
                         whileHover={{x: 10}}
                         transition={{type: "spring", stiffness: 400, damping: 10}}
                     >
-                        <Heading size="medium" variant='white'>Best Rated movies</Heading>
+                        <Heading size="medium" variant='white'>Upcoming Movies</Heading>
 
                         <div className='relative my-auto pt-2 inline-block w-max '>
                             <ChevronIcon/>

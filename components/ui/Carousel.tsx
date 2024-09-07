@@ -1,10 +1,9 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import {  EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
-import Image, {StaticImageData} from "next/image";
-import {AnimatePresence, motion} from "framer-motion";
-import clsx from "clsx";
+import {StaticImageData} from "next/image";
+
 import MovieCard from './movie-card';
 
 type PropType = {
@@ -14,9 +13,8 @@ type PropType = {
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
     const { cards, options } = props
-    const [emblaRef, emblaApi] = useEmblaCarousel(options)
+    const [emblaRef] = useEmblaCarousel(options)
 
-    const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
     return (
         <section className="max-w-full mx-auto">

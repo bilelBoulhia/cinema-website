@@ -26,53 +26,6 @@ export const ShowCase = () => {
 
     const data = [
         {
-            title: "Our cinema",
-            content: (
-                <div
-                    className="grid iphone5:rid-cols-2 iphone5:grid-rows-2 medium-phone:grid-cols-2 medium-phone:grid-rows-3 large-phone:grid-cols-2 large-phone:grid-rows-3 tablet:grid-cols-4 tablet:grid-rows-2  gap-4 h-[400px]">
-                    <div className="col-span-2 row-span-2 relative rounded-lg overflow-hidden">
-                        <img
-                            src={pic5.src}
-                            alt="Room 1"
-                            className="object-cover w-full h-full"
-                        />
-                    </div>
-                    <div className="col-span-2 relative rounded-lg overflow-hidden">
-                        <img
-                            src={pic4.src}
-                            alt="Room 2"
-                            className="object-cover w-full h-full"
-                        />
-                    </div>
-                    <div className="relative rounded-lg overflow-hidden">
-                        <img
-                            src={pic3.src}
-                            alt="Room 3"
-                            className="object-cover w-full h-full"
-                        />
-                    </div>
-                    <div className="relative rounded-lg overflow-hidden">
-                        <img
-                            src={pic1.src}
-                            alt="Room 4"
-                            className="object-cover w-full h-full"
-                        />
-                    </div>
-                </div>
-            ),
-        },
-        {
-            title: "Location",
-            content: (
-                <div className="mt-10   rounded-md">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79529.55152405263!2d2.921775964459509!3d36.74722677912593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb25e7eec01dd%3A0xe584b5a2d6569712!2z2LPZitmG2YXYpyDYp9mE2KzYstin2KbYsdmK2Kk!5e1!3m2!1sen!2sdz!4v1725331701279!5m2!1sen!2sdz"
-                         height="300" className='rounded-md w-full'   loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            ),
-        },
-        {
             title: "Services",
             content: (
                 <div className="relative overflow-x-auto">
@@ -124,6 +77,58 @@ export const ShowCase = () => {
 
             ),
         },
+
+
+
+
+        {
+            title: "Our cinema",
+            content: (
+                <div
+                    className="grid iphone5:rid-cols-2 iphone5:grid-rows-2 medium-phone:grid-cols-2 medium-phone:grid-rows-3 large-phone:grid-cols-2 large-phone:grid-rows-3 tablet:grid-cols-4 tablet:grid-rows-2  gap-4 h-[400px]">
+                    <div className="col-span-2 row-span-2 relative rounded-lg overflow-hidden">
+                        <img
+                            src={pic5.src}
+                            alt="Room 1"
+                            className="object-cover w-full h-full"
+                        />
+                    </div>
+                    <div className="col-span-2 relative rounded-lg overflow-hidden">
+                        <img
+                            src={pic4.src}
+                            alt="Room 2"
+                            className="object-cover w-full h-full"
+                        />
+                    </div>
+                    <div className="relative rounded-lg overflow-hidden">
+                        <img
+                            src={pic3.src}
+                            alt="Room 3"
+                            className="object-cover w-full h-full"
+                        />
+                    </div>
+                    <div className="relative rounded-lg overflow-hidden">
+                        <img
+                            src={pic1.src}
+                            alt="Room 4"
+                            className="object-cover w-full h-full"
+                        />
+                    </div>
+                </div>
+            ),
+        },
+        {
+            title: "Location",
+            content: (
+                <div className="mt-10   rounded-md">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79529.55152405263!2d2.921775964459509!3d36.74722677912593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb25e7eec01dd%3A0xe584b5a2d6569712!2z2LPZitmG2YXYpyDYp9mE2KzYstin2KbYsdmK2Kk!5e1!3m2!1sen!2sdz!4v1725331701279!5m2!1sen!2sdz"
+                         height="300" className='rounded-md w-full'   loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            ),
+        },
+
     ];
     return (
         <Timeline data={data}/>

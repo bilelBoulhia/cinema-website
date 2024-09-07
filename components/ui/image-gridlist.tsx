@@ -3,16 +3,13 @@ import clsx from "clsx";
 import Image, {StaticImageData} from "next/image";
 import {AnimatePresence, motion} from "framer-motion";
 import {useState} from "react";
+import {CategoryData} from "@/app/(main)/sections/Categories";
 
-const ImageGridlist = (
-    {
-        images
-    }:
-    {
-        images:{text: string,img:StaticImageData}[]
-    }
-)=>{
+
+
+const ImageGridlist = ({data}:{data:CategoryData[]})=>{
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
     return (
         <div className="iphone5:h-[80vw] large-phone:h-[30vw]  w-[100%] p-[1px]"
              style={{
@@ -27,7 +24,7 @@ const ImageGridlist = (
              }}
         >
             <div className="relative  flex large-phone:flex-row gap-2 iphone5:flex-col justify-between h-full w-full">
-                {images.map((src, index) => (
+                {data.map((src, index) => (
                     <Card
                         key={index}
                         className={clsx(
@@ -40,9 +37,9 @@ const ImageGridlist = (
                     >
                         <div>
                             <Image
-                                src={src.img}
+                                src={src.Category_cover}
                                 className="iphone5:rounded  sm:rounded-2xl medium-phone:rounded-md right-0 shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3)] max-h-[20vw] transition-all duration-500 ease-in-out"
-                                alt={`Image ${index + 1}`}
+                                alt={`Image ${index}`}
                                 layout="fill"
                                 objectFit="cover"
                             />
@@ -69,8 +66,8 @@ const ImageGridlist = (
                                         transition={{duration: 0.2, delay: 0.1}}
                                         className="absolute inset-0 flex items-center justify-center"
                                     >
-                                        <h1 className="tablet:text-2xl mb-2 iphone5:text-xs medium-phone:text-2xl  md:text-4xl lg:text-7xl font-bold text-center text-white font-sans  tracking-tight">
-                                            {src.text}
+                                        <h1 className="cursor-default tablet:text-2xl mb-2 iphone5:text-xs medium-phone:text-2xl  md:text-4xl lg:text-6xl font-bold text-center text-white font-sans  tracking-tight">
+                                            {src.Category_name}
                                         </h1>
                                     </motion.div>
                                 </motion.div>
