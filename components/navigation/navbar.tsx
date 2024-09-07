@@ -8,8 +8,8 @@ import Link from 'next/link';
 const Navbar = () => {
 
     const links = [
-        { href: "#categories", label: "Categories" },
         { href: "#this-week", label: "Weekly" },
+        { href: "#categories", label: "Categories" },
         { href: "#movies", label: "Movies" },
         { href: "#about", label: "About" }
     ];
