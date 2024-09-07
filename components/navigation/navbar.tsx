@@ -21,7 +21,7 @@ const Navbar = () => {
 
         <nav className="fixed z-50  flex justify-end items-center w-full  p-2">
 
-            <div className="nav-links iphone5:text-[0.60rem] iphone5:p-2  medium-phone:text-[0.75rem]  tablet:text-md  desktop:text-[0.80rem] backdrop-blur-sm bg-black shadow-[5px_5px_0px_0px_rgba(65,179,162,0.4)] rounded-2xl flex items-center gap-x-6">
+            <div className="nav-links iphone5:text-[0.60rem] iphone5:p-[7px]  medium-phone:text-[0.80rem] medium-phone:p-2 tablet:text-lg  desktop:text-[0.80rem] backdrop-blur-sm bg-black shadow-[5px_5px_0px_0px_rgba(65,179,162,0.4)] rounded-2xl flex items-center gap-x-6">
 
                 {links.map((link,index) => (
 
