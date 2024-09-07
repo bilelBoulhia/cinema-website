@@ -8,7 +8,7 @@ import {fetch} from "@/lib/supabase/client-api";
 import {useEffect, useState} from "react";
 
 export type CategoryData = {
-    Category_name: string;c
+    Category_name: string;
     Category_cover: string;
 };
 const Categories =()=>{

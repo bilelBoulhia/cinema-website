@@ -2,7 +2,7 @@
 
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import React from 'react';
-import { motion } from 'framer-motion';
+
 import SearchBar from "@/components/Search-bar";
 import Link from 'next/link';
 const Navbar = () => {
@@ -23,7 +23,7 @@ const Navbar = () => {
 
             <div className="nav-links iphone5:text-[0.60rem] iphone5:p-2  medium-phone:text-[0.75rem]  tablet:text-md  desktop:text-[0.80rem] backdrop-blur-sm bg-black shadow-[5px_5px_0px_0px_rgba(65,179,162,0.4)] rounded-2xl flex items-center gap-x-6">
 
-                {links.map((link,index) => (
+                {links.map((link) => (
 
                     <Link
                         key={link.href}
