@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const links = [
         { href: "#categories", label: "Categories" },
-        { href: "#this-week", label: "This Week" },
+        { href: "#this-week", label: "Weekly" },
         { href: "#movies", label: "Movies" },
         { href: "#about", label: "About" }
     ];
