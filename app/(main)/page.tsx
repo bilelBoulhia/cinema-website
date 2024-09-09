@@ -2,6 +2,7 @@ import Hero from "@/app/(main)/sections/Hero";
 import Categories from "@/app/(main)/sections/Categories";
 import Explore from "@/app/(main)/sections/Explore";
 import {ShowCase} from "@/app/(main)/sections/show-case";
+import React from "react";
 
 
 

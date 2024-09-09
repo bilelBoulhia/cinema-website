@@ -1,43 +1,53 @@
 'use client'
-import img1 from "@/assets/movies/title_poster_1717441966.jpg"
-import img2 from "@/assets/movies/s-l400.png"
-import img3 from "@/assets/movies/onesheet.jpg"
-import img4 from "@/assets/movies/JOKER-FOLIE-A-DEUX-POSTER-ACTORS-min.jpg"
 
-import img6 from "@/assets/movies/jbwYaoYWZwxtPP76AZnfYKQjCEB.jpg"
-import img7 from "@/assets/movies/4bfc625f140a9b478829cc68c1a492c2.jpg"
-import img8 from "@/assets/movies/81Rrx-Bv+6L._AC_UF1000,1000_QL80_.jpg"
-import img9 from "@/assets/movies/unnamed.jpg"
-import {StaticImageData} from "next/image";
 import Carousel from "@/components/ui/Carousel";
 
 import Heading from "@/components/ui/Heading";
 
 import {Meteors} from "@/components/ui/Meteor-background";
-import {ArrowRightIcon, ChevronIcon, PaperIcon, RocketIcon} from "@/assets/icons/Icons";
-import { motion } from "framer-motion"
+import {ChevronIcon} from "@/assets/icons/Icons";
+import {motion} from "framer-motion"
+import React, {useEffect, useState} from "react";
+import {fetch} from "@/lib/supabase/client-api";
+import MovieCard from "@/components/ui/movie-card";
+import {useRouter} from "next/navigation";
+
+export type MovieType = {
+    movie_id: number,
+    movie_name: string,
+    movie_poster: string,
+    movie_description: string,
+    movie_rating?: string,
+    movie_director:number,
+    movie_genre:string,
+    movie_language:string
+}
 
 
+const Explore = () => {
 
 
-const Explore = ()=>{
+    const [ThisWeekMovies, setThisWeekMovies] = useState<MovieType[]>([]);
+    const [UpComingMovies, setUpComingMovies] = useState<MovieType[]>([]);
+    const router = useRouter();
 
-    const films :{label: string,image:StaticImageData}[] = [
-        {label:'dune' ,image:img1},
-        {label:'venom' ,image:img2},
-        {label:'deadpool' ,image:img3},
-        {label: 'joker', image:img4},
-        {label: 'out', image:img6},
-        {label: 'Damaged', image:img7},
-        {label: 'arcadian', image:img8},
-        {label: 'unnamed', image:img9},
-        {label: 'unnamed', image:img9},
-        {label: 'unnamed', image:img9},
-        {label: 'unnamed', image:img9},
-         {label: 'unnamed', image:img9}
+    useEffect(() => {
+        const getData = async () => {
+            const movies = await fetch<MovieType>("movie", false, ["movie_name", "movie_poster","movie_id"]);
+            const upComingmovies = await fetch<MovieType>("upcoming_movies", false, ["movie_name", "movie_poster","movie_id"]);
+
+            setThisWeekMovies(movies);
+            setUpComingMovies(upComingmovies);
 
 
-    ];
+        };
+        getData();
+    }, []);
+
+    const handleRouterClick = (movieId: number,isUpcoming: boolean) => {
+        router.push(`/movie/${movieId}?upcoming=${isUpcoming}`);
+    };
+
 
     return (
         <div className="relative w-full overflow-hidden">
@@ -55,7 +65,18 @@ const Explore = ()=>{
                             <ChevronIcon/>
                         </div>
                     </motion.div>
-                    <Carousel cards={films}/>
+                    <Carousel>
+                        {ThisWeekMovies.map((card, index) => (
+                            <MovieCard
+                                size='default'
+                                key={index}
+                                label={card.movie_name}
+                                image={card.movie_poster}
+                                onClick={() => handleRouterClick(card.movie_id,false)}
+                                className="iphone5:flex-[0_0_45%] slighty-large-phone:flex-[0_0_35%] large-phone:flex-[0_0_33%] tablet:flex-[0_0_28%] extra-large-tablet:flex-[0_0_25%] laptop:flex-[0_0_15%] min-w-0 pl-4"
+                            />
+                        ))}
+                    </Carousel>
                 </div>
                 <div className="w-full p-5">
                     <motion.div
@@ -72,7 +93,18 @@ const Explore = ()=>{
 
 
                     </motion.div>
-                    <Carousel cards={films}/>
+                    <Carousel>
+                        {UpComingMovies.map((card, index) => (
+                            <MovieCard
+                                size='default'
+                                key={index}
+                                label={card.movie_name}
+                                image={card.movie_poster}
+                                onClick={() => handleRouterClick(card.movie_id,true)}
+                                className="iphone5:flex-[0_0_45%] slighty-large-phone:flex-[0_0_35%] large-phone:flex-[0_0_33%] tablet:flex-[0_0_28%] extra-large-tablet:flex-[0_0_25%] laptop:flex-[0_0_15%] min-w-0 pl-4"
+                            />
+                        ))}
+                    </Carousel>
                 </div>
             </div>
         </div>

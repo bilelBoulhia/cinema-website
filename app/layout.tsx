@@ -4,6 +4,7 @@ import Header from "@/app/sections/Header";
 import localFont from 'next/font/local'
 import React from "react";
 import Footer from "@/app/sections/Footer";
+import {ShowCase} from "@/app/(main)/sections/show-case";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`

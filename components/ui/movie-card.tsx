@@ -63,6 +63,9 @@ const MovieCard: React.FC<Props> = ({ label, image, size, className, ...props })
                         )}
                     />
                 </div>
+
+
+
                 <AnimatePresence>
                     {isHovered && (
                         <motion.div
@@ -70,12 +73,13 @@ const MovieCard: React.FC<Props> = ({ label, image, size, className, ...props })
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 10 }}
                             transition={{ duration: 0.2, delay: 0.1 }}
-                            className="absolute mt-5 text-center font-bold text-white font-sans tracking-tight"
+                            className="text-[0.75rem] w-full absolute mt-5 text-center font-bold text-white font-sans tracking-tight"
                         >
                             {label.toUpperCase()}
                         </motion.div>
                     )}
                 </AnimatePresence>
+
             </div>
         </div>
     )
