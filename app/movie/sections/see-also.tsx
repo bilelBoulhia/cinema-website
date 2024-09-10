@@ -84,7 +84,7 @@ const SeeAlso = ({movie }:{movie:MovieType[]}) => {
                             <div className="p-6">
                                 <h3 className="text-2xl font-bold mb-2">No Match</h3>
                                 <p className="text-lg font-semibold">
-                                    NO MATCH MAYBE CHECK OTHER Movies?
+                                    NO MATCH MAYBE CHECK OTHER MOVIES?
                                 </p>
                                 <div className="mt-4">
                                     <RocketIcon className="w-12 h-12 animate-bounce" />

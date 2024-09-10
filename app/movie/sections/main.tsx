@@ -51,31 +51,31 @@ export default async function Main({movie,upcoming }:{movie:MovieType[],upcoming
                         {movie[0].movie_description}
                     </h1>
 
-                    <div className="grid grid-cols-2 grid-rows-2 gap-3 my-5">
+                    <div className=" grid grid-cols-2 grid-rows-2 gap-8 my-5">
                         <div className="flex items-center">
 
 
                             <LanguageIcon/>
 
 
-                            <span><Tag>{movie[0].movie_language}</Tag></span>
+                            <span ><Tag className='text-sm'>{movie[0].movie_language}</Tag></span>
                         </div>
 
                         <div className="flex items-center">
 
 
                             <StarIcon/>
-                            <span><Tag>{movie[0].movie_rating}</Tag></span>
+                            <span><Tag className='text-sm'>{movie[0].movie_rating}</Tag></span>
                         </div>
                         <div className="flex items-center">
                             <MovieIcon/>
-                            <span><Tag>{movie[0].movie_genre}</Tag></span>
+                            <span><Tag className='text-sm'>{movie[0].movie_genre}</Tag></span>
 
                         </div>
                         <div className="flex items-center">
 
                             <DirectorIcon/>
-                            <span ><Tag >{director[0]?.director_name }</Tag></span>
+                            <span ><Tag className='text-sm'>{(director[0]?.director_name)}</Tag></span>
                         </div>
                     </div>
 

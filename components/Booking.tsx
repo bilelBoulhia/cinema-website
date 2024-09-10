@@ -30,7 +30,7 @@ const booking = ({avialable}: {avialable?:boolean})=>{
     return(
         <Modal>
             <ModalTrigger asChild>
-                <Button disabled={avialable} size='sm' className="mt-4 sm:mt-6">Book Now</Button>
+                <Button disabled={avialable} size='lg' className="mt-4 sm:mt-6">Book Now</Button>
             </ModalTrigger>
             <ModalBody>
 
