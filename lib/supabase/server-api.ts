@@ -1,5 +1,5 @@
 
-import {createClient } from "@/lib/supabase/server";
+import {createClient} from "@/lib/supabase/server";
 
 
 export async function fetch<T>(
@@ -18,4 +18,15 @@ export async function fetch<T>(
 
 
     return json ? JSON.parse(JSON.stringify(data)) : (data as T[]);
+}
+
+export async function proc(
+    fn :string,
+    SecondaryQuery?:(query:any) => any ,
+){
+
+    const supabaseClient = createClient();
+    let query =  supabaseClient.rpc(fn)
+    return  SecondaryQuery ? await  SecondaryQuery(query) : await query;
+
 }

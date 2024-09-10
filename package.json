@@ -3,9 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "start": "next start"
+
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",
@@ -36,11 +35,11 @@
     "typescript": "5.3.3"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^1.7.0",
+
     "@types/node": "20.11.5",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
-    "encoding": "^0.1.13",
-    "storybook": "^8.2.9"
+    "encoding": "^0.1.13"
+
   }
 }

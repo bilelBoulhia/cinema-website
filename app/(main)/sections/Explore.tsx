@@ -20,7 +20,8 @@ export type MovieType = {
     movie_rating?: string,
     movie_director:number,
     movie_genre:string,
-    movie_language:string
+    movie_language:string,
+    program_date: string
 }
 
 

@@ -1,4 +1,3 @@
-
 import Image from 'next/image'
 import { use } from 'react'
 import BookingForm from "@/components/Booking"

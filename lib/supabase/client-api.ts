@@ -18,3 +18,13 @@ export async function fetch<T>(
 
     return json ? JSON.parse(JSON.stringify(data)) : (data as T[]);
 }
+
+export async function proc(
+    fn :string,
+    SecondaryQuery?:(query:any) => any ,
+){
+
+    let query =  supabaseClient.rpc(fn)
+    return  SecondaryQuery ? await  SecondaryQuery(query) : await query;
+
+}
