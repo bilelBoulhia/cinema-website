@@ -11,6 +11,9 @@ import React, {cache, useEffect, useState} from "react";
 import {fetch} from "@/lib/supabase/client-api";
 import {MovieType} from "@/app/(main)/sections/Explore";
 import {useRouter} from "next/navigation";
+import {Card} from "@/components/ui/Card";
+import Link from "next/link";
+import {FlipWords} from "@/components/ui/flip-word";
 
 
 const getSimiliarMovies = cache(async (movie_genre: string,MovieId:number) => {
@@ -61,18 +64,36 @@ const SeeAlso = ({movie }:{movie:MovieType[]}) => {
 
                         </div>
                     </motion.div>
-                    <Carousel>
-                        {similiarMovies.map((card, index) => (
-                            <MovieCard
-                                size='default'
-                                key={index}
-                                label={card.movie_name}
-                                image={card.movie_poster}
-                                onClick={() => handleRouterClick(card.movie_id,false)}
-                                className="iphone5:flex-[0_0_45%] slighty-large-phone:flex-[0_0_35%] large-phone:flex-[0_0_33%] tablet:flex-[0_0_28%] extra-large-tablet:flex-[0_0_25%] laptop:flex-[0_0_15%] min-w-0 pl-4"
-                            />
-                        ))}
-                    </Carousel>
+                    {similiarMovies.length>0 ?(
+                        <Carousel>
+                            {similiarMovies.map((card, index) => (
+                                <MovieCard
+                                    size='default'
+                                    key={index}
+                                    label={card.movie_name}
+                                    image={card.movie_poster}
+                                    onClick={() => handleRouterClick(card.movie_id,false)}
+                                    className="iphone5:flex-[0_0_45%] slighty-large-phone:flex-[0_0_35%] large-phone:flex-[0_0_33%] tablet:flex-[0_0_28%] extra-large-tablet:flex-[0_0_25%] laptop:flex-[0_0_15%] min-w-0 pl-4"
+                                />
+                            ))}
+                        </Carousel>
+
+                    ):(
+
+                        <Card className="w-full bg-gradient-to-br from-teal-500  text-white shadow-lg">
+                            <div className="p-6">
+                                <h3 className="text-2xl font-bold mb-2">No Match</h3>
+                                <p className="text-lg font-semibold">
+                                    NO MATCH MAYBE CHECK OTHER Movies?
+                                </p>
+                                <div className="mt-4">
+                                    <RocketIcon className="w-12 h-12 animate-bounce" />
+                                </div>
+                            </div>
+                        </Card>
+
+                    )}
+
                 </div>
                 <div className="w-full p-5">
                     <motion.div

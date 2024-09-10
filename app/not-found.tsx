@@ -25,7 +25,7 @@ export default function NotFound() {
     }, [router])
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-600 flex flex-col items-center justify-center text-white p-4">
+        <div className="min-h-screen w-full bg-gradient-to-b from-teal-900 to-black flex flex-col items-center justify-center text-white p-4">
             <motion.div
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
