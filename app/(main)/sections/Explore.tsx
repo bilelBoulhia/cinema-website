@@ -5,7 +5,7 @@ import Carousel from "@/components/ui/Carousel";
 import Heading from "@/components/ui/Heading";
 
 import {Meteors} from "@/components/ui/Meteor-background";
-import {ChevronIcon} from "@/assets/icons/Icons";
+import {ChevronIcon, RocketIcon} from "@/assets/icons/Icons";
 import {motion} from "framer-motion"
 import React, {useEffect, useState} from "react";
 import {fetch} from "@/lib/supabase/client-api";
@@ -45,8 +45,8 @@ const Explore = () => {
         getData();
     }, []);
 
-    const handleRouterClick = (movieId: number,isUpcoming: boolean) => {
-        router.push(`/movie/${movieId}?upcoming=${isUpcoming}`);
+    const handleRouterClick = (page: 'movie' | 'ThisWeekmovies',movieId?: number,isUpcoming: boolean = false) => {
+      page === 'movie' ?  router.push(`/${page}/${movieId}?upcoming=${isUpcoming}`) : router.push(`/${page}`)
     };
 
 
@@ -58,12 +58,14 @@ const Explore = () => {
                     <motion.div
                         className='flex gap-2 items-start flex-row cursor-pointer'
                         whileTap={{x: 10}}
+                        onClick={()=>handleRouterClick('ThisWeekmovies')}
                         whileHover={{x: 10}}
                         transition={{type: "spring", stiffness: 400, damping: 10}}
                     >
-                        <Heading size="medium" variant='white'>This Week Movies</Heading>
+                        <Heading
+                            size="medium" variant='white'>This Week Movies</Heading>
                         <div className='relative my-auto pt-2 inline-block w-max '>
-                            <ChevronIcon/>
+                            <RocketIcon/>
                         </div>
                     </motion.div>
                     <Carousel>
@@ -73,7 +75,7 @@ const Explore = () => {
                                 key={index}
                                 label={card.movie_name}
                                 image={card.movie_poster}
-                                onClick={() => handleRouterClick(card.movie_id,false)}
+                                onClick={() => handleRouterClick('movie',card.movie_id,false)}
                                 className="iphone5:flex-[0_0_45%] slighty-large-phone:flex-[0_0_35%] large-phone:flex-[0_0_33%] tablet:flex-[0_0_28%] extra-large-tablet:flex-[0_0_25%] laptop:flex-[0_0_15%] min-w-0 pl-4"
                             />
                         ))}
@@ -89,7 +91,7 @@ const Explore = () => {
                         <Heading size="medium" variant='white'>Upcoming Movies</Heading>
 
                         <div className='relative my-auto pt-2 inline-block w-max '>
-                            <ChevronIcon/>
+                            <RocketIcon/>
                         </div>
 
 
@@ -101,7 +103,7 @@ const Explore = () => {
                                 key={index}
                                 label={card.movie_name}
                                 image={card.movie_poster}
-                                onClick={() => handleRouterClick(card.movie_id,true)}
+                                onClick={() => handleRouterClick('movie',card.movie_id,true)}
                                 className="iphone5:flex-[0_0_45%] slighty-large-phone:flex-[0_0_35%] large-phone:flex-[0_0_33%] tablet:flex-[0_0_28%] extra-large-tablet:flex-[0_0_25%] laptop:flex-[0_0_15%] min-w-0 pl-4"
                             />
                         ))}

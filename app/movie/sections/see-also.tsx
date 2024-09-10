@@ -4,7 +4,7 @@ import Carousel from "@/components/ui/Carousel";
 
 import Heading from "@/components/ui/Heading";
 import {motion} from "framer-motion";
-import {ChevronIcon} from "@/assets/icons/Icons";
+import {ChevronIcon, RocketIcon} from "@/assets/icons/Icons";
 import {Meteors} from "@/components/ui/Meteor-background";
 import MovieCard from "@/components/ui/movie-card";
 import React, {cache, useEffect, useState} from "react";
@@ -57,7 +57,7 @@ const SeeAlso = ({movie }:{movie:MovieType[]}) => {
                     >
                         <Heading size="medium" variant='white'>see also</Heading>
                         <div className='relative my-auto pt-2 inline-block w-max '>
-                            <ChevronIcon/>
+                            <RocketIcon/>
 
                         </div>
                     </motion.div>
@@ -84,7 +84,7 @@ const SeeAlso = ({movie }:{movie:MovieType[]}) => {
                         <Heading size="medium" variant='white'>Upcoming Movies</Heading>
 
                         <div className='relative my-auto pt-2 inline-block w-max '>
-                            <ChevronIcon/>
+                            <RocketIcon/>
                         </div>
 
 

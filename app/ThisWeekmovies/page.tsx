@@ -55,7 +55,7 @@ export default function Component() {
                     <div className='flex p-4 flex-row items-center justify-start w-full mt-14 relative'>
                         <Heading
                             className='medium-phone:text-4xl iphone5:text-5xl lg:text-4xl font-bold'
-                            variant='white'
+                            variant='lightColor'
                             size='default'
                         >
                             {formatDate(date)}
@@ -63,7 +63,7 @@ export default function Component() {
                         <div
                             className='flex-grow h-0.5 mt-4 ml-2'
                             style={{
-                                background: 'linear-gradient(to right, white, transparent)'
+                                background: 'linear-gradient(to right, teal, transparent)'
                             }}
                         />
                     </div>
